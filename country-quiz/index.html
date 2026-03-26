@@ -1,1 +1,39 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country Quiz</title>
+</head>
+<body>
+
+<h2>Country Quiz</h2>
+
+<div id="question"></div>
+<input type="text" id="answer">
+<button onclick="check()">Submit</button>
+
+<p id="result"></p>
+
+<script>
+let data = [
+    {country: "Canada", capital: "Ottawa"},
+    {country: "India", capital: "New Delhi"},
+    {country: "USA", capital: "Washington"}
+];
+
+let current = data[Math.floor(Math.random()*data.length)];
+
+document.getElementById("question").innerText = "Capital of " + current.country;
+
+function check() {
+    let user = document.getElementById("answer").value;
+    if(user.toLowerCase() === current.capital.toLowerCase()) {
+        document.getElementById("result").innerText = "Correct!";
+    } else {
+        document.getElementById("result").innerText = "Wrong!";
+    }
+}
+</script>
+
+</body>
+</html>
