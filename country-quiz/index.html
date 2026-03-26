@@ -47,13 +47,11 @@ document.getElementById("question").innerText = "Capital of " + current.country;
 function check() {
     let user = document.getElementById("answer").value.toLowerCase().trim();
 
-    let correctAnswers = current.capital.map(c => c.toLowerCase());
+    let isCorrect = current.capital.some(c =>
+        c.toLowerCase().includes(user) || user.includes(c.toLowerCase())
+    );
 
-    if (correctAnswers.includes(user)) {
-        document.getElementById("result").innerText = "Correct!";
-    } else {
-        document.getElementById("result").innerText = "Wrong!";
-    }
+    document.getElementById("result").innerText = isCorrect ? "Correct!" : "Wrong!";
 }
 </script>
 
