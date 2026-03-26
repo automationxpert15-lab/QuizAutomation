@@ -16,9 +16,28 @@
 
 <script>
 let data = [
-    {country: "Canada", capital: "Ottawa"},
-    {country: "India", capital: "New Delhi"},
-    {country: "USA", capital: "Washington"}
+    {country: "Canada", capital: ["Ottawa"]},
+    {country: "India", capital: ["New Delhi", "Delhi"]},
+    {country: "USA", capital: ["Washington", "Washington DC"]},
+    {country: "UK", capital: ["London"]},
+    {country: "France", capital: ["Paris"]},
+    {country: "Germany", capital: ["Berlin"]},
+    {country: "Italy", capital: ["Rome"]},
+    {country: "Spain", capital: ["Madrid"]},
+    {country: "Australia", capital: ["Canberra"]},
+    {country: "Japan", capital: ["Tokyo"]},
+    {country: "China", capital: ["Beijing"]},
+    {country: "Russia", capital: ["Moscow"]},
+    {country: "Brazil", capital: ["Brasilia"]},
+    {country: "South Africa", capital: ["Pretoria", "Cape Town", "Bloemfontein"]},
+    {country: "Mexico", capital: ["Mexico City"]},
+    {country: "Netherlands", capital: ["Amsterdam"]},
+    {country: "Switzerland", capital: ["Bern"]},
+    {country: "Sweden", capital: ["Stockholm"]},
+    {country: "Norway", capital: ["Oslo"]},
+    {country: "Denmark", capital: ["Copenhagen"]},
+    {country: "Argentina", capital: ["Buenos Aires"]},
+    {country: "Egypt", capital: ["Cairo"]}
 ];
 
 let current = data[Math.floor(Math.random()*data.length)];
@@ -26,8 +45,11 @@ let current = data[Math.floor(Math.random()*data.length)];
 document.getElementById("question").innerText = "Capital of " + current.country;
 
 function check() {
-    let user = document.getElementById("answer").value;
-    if(user.toLowerCase() === current.capital.toLowerCase()) {
+    let user = document.getElementById("answer").value.toLowerCase().trim();
+
+    let correctAnswers = current.capital.map(c => c.toLowerCase());
+
+    if (correctAnswers.includes(user)) {
         document.getElementById("result").innerText = "Correct!";
     } else {
         document.getElementById("result").innerText = "Wrong!";
